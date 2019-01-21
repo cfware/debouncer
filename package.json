@@ -1,0 +1,38 @@
+{
+	"name": "@cfware/debouncer",
+	"version": "0.1.0",
+	"description": "Debouncer class",
+	"main": "debouncer.js",
+	"scripts": {
+		"test": "xo && nyc ava -v"
+	},
+	"engines": {
+		"node": ">=6"
+	},
+	"author": "Corey Farrell",
+	"license": "MIT",
+	"files": [
+		"*.js"
+	],
+	"keywords": [],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cfware/debouncer.git"
+	},
+	"bugs": {
+		"url": "https://github.com/cfware/debouncer/issues"
+	},
+	"homepage": "https://github.com/cfware/debouncer#readme",
+	"devDependencies": {
+		"@babel/preset-env": "^7.2.3",
+		"@babel/register": "^7.0.0",
+		"ava": "^1.1.0",
+		"nyc": "^13.1.0",
+		"xo": "^0.24.0"
+	},
+	"ava": {
+		"require": [
+			"@babel/register"
+		]
+	}
+}
