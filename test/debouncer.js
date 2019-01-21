@@ -44,8 +44,8 @@ test('single call to .run', t => {
 	d.run();
 
 	return Promise.all([
-		d.checkAfter(80, 0),
-		d.checkAfter(120, 1),
+		d.checkAfter(75, 0),
+		d.checkAfter(125, 1),
 		d.checkAfter(250, 1)
 	]);
 });
@@ -57,8 +57,8 @@ test('two calls to .run within first delay', t => {
 	setTimeout(() => d.run(), 5);
 
 	return Promise.all([
-		d.checkAfter(80, 0),
-		d.checkAfter(120, 1),
+		d.checkAfter(75, 0),
+		d.checkAfter(125, 1),
 		d.checkAfter(250, 1)
 	]);
 });
@@ -71,11 +71,11 @@ test('two calls after first run', t => {
 	setTimeout(() => d.run(), 150);
 
 	return Promise.all([
-		d.checkAfter(80, 0),
-		d.checkAfter(120, 1),
-		d.checkAfter(230, 1),
-		d.checkAfter(270, 2),
-		d.checkAfter(370, 2)
+		d.checkAfter(75, 0),
+		d.checkAfter(125, 1),
+		d.checkAfter(225, 1),
+		d.checkAfter(275, 2),
+		d.checkAfter(375, 2)
 	]);
 });
 
@@ -94,9 +94,9 @@ test('flush after run', t => {
 	setTimeout(() => d.flush(), 50);
 
 	return Promise.all([
-		d.checkAfter(30, 0),
-		d.checkAfter(70, 1),
-		d.checkAfter(150, 1)
+		d.checkAfter(25, 0),
+		d.checkAfter(75, 1),
+		d.checkAfter(250, 1)
 	]);
 });
 
@@ -114,7 +114,7 @@ test('clear during delay', t => {
 	d.run();
 	setTimeout(() => d.clear(), 50);
 
-	return d.checkAfter(150, 0);
+	return d.checkAfter(175, 0);
 });
 
 test('maximum delays', t => {
@@ -123,22 +123,22 @@ test('maximum delays', t => {
 	d.run();
 	d.flush();
 	d.run();
-	// 1st delay to now + 160ms
-	setTimeout(() => d.run(), 60);
-	// 2nd delay to now + 240ms
-	setTimeout(() => d.run(), 140);
+	// 1st delay to now + 175ms
+	setTimeout(() => d.run(), 75);
+	// 2nd delay to now + 250ms
+	setTimeout(() => d.run(), 150);
 	// The next two do not cause any further delay
 	setTimeout(() => d.run(), 200);
-	setTimeout(() => d.run(), 220);
+	setTimeout(() => d.run(), 225);
 
-	// Normal run at now + 360ms
-	setTimeout(() => d.run(), 260);
+	// Normal run at now + 375ms
+	setTimeout(() => d.run(), 275);
 
 	return Promise.all([
-		d.checkAfter(220, 1),
-		d.checkAfter(260, 2),
-		d.checkAfter(340, 2),
-		d.checkAfter(380, 3),
+		d.checkAfter(225, 1),
+		d.checkAfter(275, 2),
+		d.checkAfter(350, 2),
+		d.checkAfter(400, 3),
 		d.checkAfter(500, 3)
 	]);
 });
