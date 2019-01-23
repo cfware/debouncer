@@ -1,5 +1,5 @@
 export class Debouncer {
-	constructor(cb, delay = 100, maxDelays = Number.MAX_SAFE_INTEGER) {
+	constructor(cb, delay = 100, maxDelays = 2) {
 		if (typeof cb !== 'function') {
 			throw new TypeError('Function is required');
 		}
@@ -8,32 +8,39 @@ export class Debouncer {
 			_cb: cb,
 			delay,
 			maxDelays,
-			_delaysCount: 0,
 			_lastRun: 0,
+			_firstRequest: 0,
 			_lastRequest: 0
 		});
 	}
 
 	_now() {
-		this._delaysCount = 0;
 		this._lastRun = Date.now();
 		this._cb();
 		this.clear();
 	}
 
 	_later() {
-		const delta = Date.now() - this._lastRequest;
+		const now = Date.now();
+		const delta = now - this._lastRequest;
+		const totalDelta = now - this._firstRequest;
+		const maxDelay = this.delay * this.maxDelays;
+		const maxTimeout = Math.min(maxDelay - totalDelta, this.delay - delta);
 
-		if (this._lastRun && delta < this.delay && this._delaysCount < this.maxDelays) {
-			this._delaysCount++;
-			this._timeout = setTimeout(() => this._later(), this.delay - delta);
+		if (this._lastRun && maxTimeout > 0) {
+			this._timeout = setTimeout(() => this._later(), maxTimeout);
 		} else {
 			this._now();
 		}
 	}
 
 	run() {
-		this._lastRequest = Date.now();
+		const now = Date.now();
+
+		this._lastRequest = now;
+		if (!this._firstRequest) {
+			this._firstRequest = now;
+		}
 
 		if (!this._timeout) {
 			this._timeout = setTimeout(() => this._later(), this.delay);
@@ -47,6 +54,8 @@ export class Debouncer {
 	}
 
 	clear() {
+		this._firstRequest = 0;
+		this._lastRequest = 0;
 		this._timeout = clearTimeout(this._timeout);
 	}
 }

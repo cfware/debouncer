@@ -36,7 +36,7 @@ setTimeout(() => debouncer.run(), 50);
 
 * `cb` is the callback which is to be rate controlled.  Required, must be a function.
 * `delay` is the number of milliseconds to wait before running the callback.  Optional, default `100`.
-* `maxDelays` is the maximum number of times the callback can be rescheduled.  Optional, default `Number.MAX_SAFE_INTEGER`.
+* `maxDelays` maximum number of full delays before `cb` is run.  Optional, default `2`.
 
 ### debouncer.run()
 

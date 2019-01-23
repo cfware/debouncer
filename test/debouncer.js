@@ -4,6 +4,7 @@ import {Debouncer} from '..';
 class TestObject {
 	constructor(t, ...args) {
 		this.runs = 0;
+		this.start = Date.now() + 2;
 		this.t = t;
 		this.d = new Debouncer(() => {
 			this.runs++;
@@ -118,26 +119,32 @@ test('clear during delay', t => {
 });
 
 test('maximum delays', t => {
+	// 100ms minimum delay, 200ms maximum.
 	const d = new TestObject(t, 100, 2);
 
 	d.run();
 	d.flush();
-	d.run();
-	// 1st delay to now + 175ms
-	setTimeout(() => d.run(), 75);
-	// 2nd delay to now + 250ms
-	setTimeout(() => d.run(), 150);
-	// The next two do not cause any further delay
-	setTimeout(() => d.run(), 200);
-	setTimeout(() => d.run(), 225);
 
-	// Normal run at now + 375ms
-	setTimeout(() => d.run(), 275);
+	// Initial schedule is for +100ms
+	d.run();
+
+	// This will defer to 160ms
+	setTimeout(() => d.run(), 60);
+	// This will defer to 200ms
+	setTimeout(() => d.run(), 140);
+	// The will not defer, already scheduled at 200ms / maximum delay.
+	setTimeout(() => d.run(), 180);
+
+	// This schedules for 320ms
+	setTimeout(() => d.run(), 220);
+
+	// This will defer to 380ms
+	setTimeout(() => d.run(), 280);
 
 	return Promise.all([
-		d.checkAfter(225, 1),
-		d.checkAfter(275, 2),
-		d.checkAfter(350, 2),
+		d.checkAfter(180, 1),
+		d.checkAfter(220, 2),
+		d.checkAfter(360, 2),
 		d.checkAfter(400, 3),
 		d.checkAfter(500, 3)
 	]);
