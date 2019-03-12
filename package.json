@@ -4,6 +4,7 @@
 	"description": "Debouncer class",
 	"main": "debouncer.js",
 	"scripts": {
+		"release": "standard-version --sign",
 		"test": "xo && nyc ava -v"
 	},
 	"engines": {
@@ -28,6 +29,7 @@
 		"@babel/register": "^7.0.0",
 		"ava": "^1.1.0",
 		"nyc": "^13.1.0",
+		"standard-version": "^5.0.1",
 		"xo": "^0.24.0"
 	},
 	"ava": {
