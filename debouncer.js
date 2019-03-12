@@ -6,8 +6,8 @@ export class Debouncer {
 
 		Object.assign(this, {
 			_cb: cb,
-			delay,
-			maxDelays,
+			_delay: delay,
+			_maxDelays: maxDelays,
 			_lastRun: 0,
 			_firstRequest: 0,
 			_lastRequest: 0
@@ -24,8 +24,8 @@ export class Debouncer {
 		const now = Date.now();
 		const delta = now - this._lastRequest;
 		const totalDelta = now - this._firstRequest;
-		const maxDelay = this.delay * this.maxDelays;
-		const maxTimeout = Math.min(maxDelay - totalDelta, this.delay - delta);
+		const maxDelay = this._delay * this._maxDelays;
+		const maxTimeout = Math.min(maxDelay - totalDelta, this._delay - delta);
 
 		if (this._lastRun && maxTimeout > 0) {
 			this._timeout = setTimeout(() => this._later(), maxTimeout);
@@ -43,7 +43,7 @@ export class Debouncer {
 		}
 
 		if (!this._timeout) {
-			this._timeout = setTimeout(() => this._later(), this.delay);
+			this._timeout = setTimeout(() => this._later(), this._delay);
 		}
 	}
 
