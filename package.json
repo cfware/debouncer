@@ -13,7 +13,7 @@
 	"author": "Corey Farrell",
 	"license": "MIT",
 	"files": [
-		"*.js"
+		"debouncer.js"
 	],
 	"keywords": [],
 	"repository": {
