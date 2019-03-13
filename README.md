@@ -38,9 +38,11 @@ setTimeout(() => debouncer.run(), 50);
 * `delay` is the number of milliseconds to wait before running the callback.  Optional, default `100`.
 * `maxDelays` maximum number of full delays before `cb` is run.  Optional, default `2`.
 
-### debouncer.run()
+### debouncer.run(immediately = false)
 
-This schedules a call to the callback `func`.
+This schedules a call to the callback.
+
+If `immediately` is enabled the callback is run immediately.
 
 ### debouncer.flush()
 

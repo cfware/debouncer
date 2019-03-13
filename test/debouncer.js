@@ -11,8 +11,8 @@ class TestObject {
 		}, ...args);
 	}
 
-	run() {
-		this.d.run();
+	run(immediately) {
+		this.d.run(immediately);
 	}
 
 	flush() {
@@ -97,6 +97,17 @@ test('flush after run', t => {
 	return Promise.all([
 		d.checkAfter(25, 0),
 		d.checkAfter(75, 1),
+		d.checkAfter(250, 1)
+	]);
+});
+
+test('immediate flush', t => {
+	const d = new TestObject(t);
+
+	d.run(true);
+
+	return Promise.all([
+		d.checkAfter(0, 1),
 		d.checkAfter(250, 1)
 	]);
 });

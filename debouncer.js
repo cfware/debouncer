@@ -34,7 +34,7 @@ export class Debouncer {
 		}
 	}
 
-	run() {
+	run(immediately = false) {
 		const now = Date.now();
 
 		this._lastRequest = now;
@@ -42,7 +42,9 @@ export class Debouncer {
 			this._firstRequest = now;
 		}
 
-		if (!this._timeout) {
+		if (immediately) {
+			this._now();
+		} else if (!this._timeout) {
 			this._timeout = setTimeout(() => this._later(), this._delay);
 		}
 	}
