@@ -21,7 +21,7 @@ npm i --save @cfware/debouncer
 ## Usage
 
 ```js
-import {Debouncer} from '@cfware/debouncer';
+import Debouncer from '@cfware/debouncer';
 
 const debouncer = new Debouncer(() => {
 	console.log('debounced callback');

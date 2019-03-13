@@ -1,5 +1,5 @@
 import test from 'ava';
-import {Debouncer} from '..';
+import Debouncer from '..';
 
 class TestObject {
 	constructor(t, ...args) {

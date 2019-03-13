@@ -1,4 +1,4 @@
-export class Debouncer {
+export default class Debouncer {
 	constructor(cb, delay = 100, maxDelays = 2) {
 		if (typeof cb !== 'function') {
 			throw new TypeError('Function is required');
