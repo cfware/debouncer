@@ -1,9 +1,3 @@
-os:
-  - windows
-  - linux
-# OSX agents have timing issues.
-#  - osx
-
 language: node_js
 
 node_js:
