@@ -1,4 +1,6 @@
 import test from 'ava';
+import delay from 'delay';
+
 import Debouncer from '..';
 
 class TestObject {
@@ -23,13 +25,10 @@ class TestObject {
 		this.d.clear();
 	}
 
-	checkAfter(delay, expected) {
-		return new Promise(resolve => {
-			setTimeout(() => {
-				this.t.is(this.runs, expected, `after ${delay}ms delay`);
-				resolve();
-			}, delay);
-		});
+	async checkAfter(ms, expected) {
+		await delay(ms);
+
+		this.t.is(this.runs, expected, `after ${ms}ms delay`);
 	}
 }
 
