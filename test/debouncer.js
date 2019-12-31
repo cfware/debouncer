@@ -1,7 +1,9 @@
+import {promisify} from 'util';
 import test from 'ava';
-import delay from 'delay';
 
 import Debouncer from '..';
+
+const delay = promisify(setTimeout);
 
 class TestObject {
 	constructor(t, ...args) {
