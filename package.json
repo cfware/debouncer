@@ -23,7 +23,7 @@
 	"homepage": "https://github.com/cfware/debouncer#readme",
 	"devDependencies": {
 		"@cfware/nyc": "^0.6.0",
-		"ava": "^2.0.0",
+		"ava": "^3.0.0",
 		"esm": "^3.2.22",
 		"nyc": "^15.0.0",
 		"standard-version": "^7.0.0",
