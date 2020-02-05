@@ -1,17 +1,16 @@
 export default class Debouncer {
-	constructor(cb, delay = 100, maxDelays = 2) {
-		if (typeof cb !== 'function') {
+	_lastRun = 0;
+	_firstRequest = 0;
+	_lastRequest = 0;
+
+	constructor(callback, delay = 100, maxDelays = 2) {
+		if (typeof callback !== 'function') {
 			throw new TypeError('Function is required');
 		}
 
-		Object.assign(this, {
-			_cb: cb,
-			_delay: delay,
-			_maxDelays: maxDelays,
-			_lastRun: 0,
-			_firstRequest: 0,
-			_lastRequest: 0
-		});
+		this._cb = callback;
+		this._delay = delay;
+		this._maxDelays = maxDelays;
 	}
 
 	_now() {

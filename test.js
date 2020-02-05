@@ -1,7 +1,7 @@
 import {promisify} from 'util';
-import test from 'ava';
+import t from 'libtap';
 
-import Debouncer from '..';
+import Debouncer from './debouncer.js';
 
 const delay = promisify(setTimeout);
 
@@ -30,17 +30,17 @@ class TestObject {
 	async checkAfter(ms, expected) {
 		await delay(ms);
 
-		this.t.is(this.runs, expected, `after ${ms}ms delay`);
+		this.t.equal(this.runs, expected, `after ${ms}ms delay`);
 	}
 }
 
-test('exports constructor', t => {
-	t.is(typeof Debouncer, 'function');
+t.test('exports constructor', async t => {
+	t.type(Debouncer, 'function');
 	t.throws(() => new Debouncer(), 'Function is required');
-	t.true(new Debouncer(() => {}) instanceof Debouncer);
+	t.type(new Debouncer(() => {}), Debouncer);
 });
 
-test('single call to .run', t => {
+t.test('single call to .run', async t => {
 	const d = new TestObject(t);
 
 	d.run();
@@ -52,7 +52,7 @@ test('single call to .run', t => {
 	]);
 });
 
-test('two calls to .run within first delay', t => {
+t.test('two calls to .run within first delay', async t => {
 	const d = new TestObject(t, 100);
 
 	d.run();
@@ -65,7 +65,7 @@ test('two calls to .run within first delay', t => {
 	]);
 });
 
-test('two calls after first run', t => {
+t.test('two calls after first run', async t => {
 	const d = new TestObject(t);
 
 	d.run();
@@ -81,7 +81,7 @@ test('two calls after first run', t => {
 	]);
 });
 
-test('flush without run', t => {
+t.test('flush without run', async t => {
 	const d = new TestObject(t);
 
 	d.flush();
@@ -89,7 +89,7 @@ test('flush without run', t => {
 	return d.checkAfter(150, 0);
 });
 
-test('flush after run', t => {
+t.test('flush after run', async t => {
 	const d = new TestObject(t);
 
 	d.run();
@@ -102,7 +102,7 @@ test('flush after run', t => {
 	]);
 });
 
-test('immediate flush', t => {
+t.test('immediate flush', async t => {
 	const d = new TestObject(t);
 
 	d.run(true);
@@ -113,7 +113,7 @@ test('immediate flush', t => {
 	]);
 });
 
-test('clear without run', t => {
+t.test('clear without run', async t => {
 	const d = new TestObject(t);
 
 	d.clear();
@@ -121,7 +121,7 @@ test('clear without run', t => {
 	return d.checkAfter(150, 0);
 });
 
-test('clear during delay', t => {
+t.test('clear during delay', async t => {
 	const d = new TestObject(t);
 
 	d.run();
@@ -130,7 +130,7 @@ test('clear during delay', t => {
 	return d.checkAfter(175, 0);
 });
 
-test('maximum delays', t => {
+t.test('maximum delays', async t => {
 	// 100ms minimum delay, 200ms maximum.
 	const d = new TestObject(t, 100, 2);
 

@@ -10,9 +10,7 @@ Debouncer class
 
 ### Install @cfware/debouncer
 
-This module is distributed in ES module format, no CJS is provided.  The intended
-target is modern web browsers though this should work from node.js provided ES
-module support is enabled.
+This module is distributed in ES module format, no CJS is provided.
 
 ```sh
 npm i --save @cfware/debouncer
@@ -32,11 +30,11 @@ debouncer.run();
 setTimeout(() => debouncer.run(), 50);
 ```
 
-## debouncer = new Debouncer(cb, delay, maxDelays)
+## debouncer = new Debouncer(callback, delay, maxDelays)
 
-* `cb` is the callback which is to be rate controlled.  Required, must be a function.
+* `callback` is the callback which is to be rate controlled.  Required, must be a function.
 * `delay` is the number of milliseconds to wait before running the callback.  Optional, default `100`.
-* `maxDelays` maximum number of full delays before `cb` is run.  Optional, default `2`.
+* `maxDelays` maximum number of full delays before `callback` is run.  Optional, default `2`.
 
 ### debouncer.run(immediately = false)
 
@@ -51,15 +49,6 @@ This forces the callback to run immediately.
 ### debouncer.clear()
 
 Cancel any scheduled runs of the callback.
-
-## Running tests
-
-Tests are provided by xo and ava.
-
-```sh
-npm install
-npm test
-```
 
 [npm-image]: https://img.shields.io/npm/v/@cfware/debouncer.svg
 [npm-url]: https://npmjs.org/package/@cfware/debouncer

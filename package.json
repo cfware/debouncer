@@ -3,12 +3,15 @@
 	"version": "0.3.2",
 	"description": "Debouncer class",
 	"main": "debouncer.js",
+	"type": "module",
 	"scripts": {
 		"release": "standard-version --sign",
-		"test": "xo && nyc ava -v"
+		"pretest": "cfware-lint .",
+		"test": "c8 -r none node test.js | tap-yaml-summary",
+		"posttest": "c8 report"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=13.7.0"
 	},
 	"author": "Corey Farrell",
 	"license": "MIT",
@@ -22,11 +25,10 @@
 	},
 	"homepage": "https://github.com/cfware/debouncer#readme",
 	"devDependencies": {
-		"@cfware/nyc": "^0.6.0",
-		"ava": "^2.0.0",
-		"esm": "^3.2.22",
-		"nyc": "^15.0.0",
+		"@cfware/lint": "^1.1.0",
+		"c8": "^7.0.1",
+		"libtap": "^0.2.0",
 		"standard-version": "^7.0.0",
-		"xo": "^0.25.3"
+		"tap-yaml-summary": "^0.1.0"
 	}
 }
