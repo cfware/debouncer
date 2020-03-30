@@ -1,6 +1,8 @@
 *.tgz
 node_modules
+nyc.config.cjs
+.nyc_output
 coverage
 package
-.travis.yml
+.github
 test.js
