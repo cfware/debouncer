@@ -5,14 +5,13 @@
 	"main": "debouncer.js",
 	"type": "module",
 	"scripts": {
-		"release": "standard-version --sign",
 		"pretest": "cfware-lint .",
 		"tests-only": "nyc -s --no-check-coverage node --experimental-loader @istanbuljs/esm-loader-hook test.js | tap-yaml-summary",
 		"test": "npm run -s tests-only",
 		"posttest": "nyc report"
 	},
 	"engines": {
-		"node": ">=13.7.0"
+		"node": ">=14.0.0"
 	},
 	"author": "Corey Farrell",
 	"license": "MIT",
@@ -27,11 +26,10 @@
 	"homepage": "https://github.com/cfware/debouncer#readme",
 	"devDependencies": {
 		"@cfware/lint": "^1.1.0",
-		"@cfware/nyc": "^0.6.0",
+		"@cfware/nyc": "^0.7.0",
 		"@istanbuljs/esm-loader-hook": "^0.1.0",
 		"libtap": "^0.3.0",
 		"nyc": "^15.0.0",
-		"standard-version": "^8.0.0",
 		"tap-yaml-summary": "^0.1.0"
 	}
 }

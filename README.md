@@ -1,20 +1,6 @@
-# @cfware/debouncer
-
-![Tests][tests-status]
-[![Greenkeeper badge][gk-image]](https://greenkeeper.io/)
-[![NPM Version][npm-image]][npm-url]
-[![NPM Downloads][downloads-image]][downloads-url]
-[![MIT][license-image]](LICENSE)
+# @cfware/debouncer [![NPM Version][npm-image]][npm-url]
 
 Debouncer class
-
-### Install @cfware/debouncer
-
-This module is distributed in ES module format, no CJS is provided.
-
-```sh
-npm i --save @cfware/debouncer
-```
 
 ## Usage
 
@@ -50,10 +36,6 @@ This forces the callback to run immediately.
 
 Cancel any scheduled runs of the callback.
 
+
 [npm-image]: https://img.shields.io/npm/v/@cfware/debouncer.svg
 [npm-url]: https://npmjs.org/package/@cfware/debouncer
-[tests-status]: https://github.com/cfware/cleanable-interval/workflows/Tests/badge.svg
-[gk-image]: https://badges.greenkeeper.io/cfware/debouncer.svg
-[downloads-image]: https://img.shields.io/npm/dm/@cfware/debouncer.svg
-[downloads-url]: https://npmjs.org/package/@cfware/debouncer
-[license-image]: https://img.shields.io/npm/l/@cfware/debouncer.svg

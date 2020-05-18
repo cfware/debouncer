@@ -1,8 +1,5 @@
 *.tgz
-node_modules
 nyc.config.cjs
-.nyc_output
 coverage
-package
 .github
 test.js
