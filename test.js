@@ -1,7 +1,7 @@
 import {promisify} from 'util';
 import t from 'libtap';
 
-import Debouncer from './debouncer.js';
+import Debouncer from '@cfware/debouncer';
 
 const delay = promisify(setTimeout);
 
