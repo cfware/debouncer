@@ -26,7 +26,7 @@
 	},
 	"homepage": "https://github.com/cfware/debouncer#readme",
 	"devDependencies": {
-		"@cfware/lint": "^2.0.6",
+		"@cfware/lint": "^3.0.0",
 		"@cfware/nyc": "^0.7.1",
 		"@istanbuljs/esm-loader-hook": "^0.2.0",
 		"libtap": "^1.4.0",

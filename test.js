@@ -1,4 +1,4 @@
-import {promisify} from 'util';
+import {promisify} from 'node:util';
 import t from 'libtap';
 
 import Debouncer from '@cfware/debouncer';
