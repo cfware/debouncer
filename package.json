@@ -1,36 +1,36 @@
 {
-	"name": "@cfware/debouncer",
-	"version": "0.3.3",
-	"description": "Debouncer class",
-	"main": "debouncer.js",
-	"exports": "./debouncer.js",
-	"type": "module",
-	"scripts": {
-		"pretest": "cfware-lint .",
-		"tests-only": "nyc -s --no-check-coverage node --experimental-loader @istanbuljs/esm-loader-hook test.js | tap-yaml-summary",
-		"test": "npm run -s tests-only",
-		"posttest": "nyc report"
-	},
-	"engines": {
-		"node": ">=16.12.0"
-	},
-	"author": "Corey Farrell",
-	"license": "MIT",
-	"keywords": [],
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/cfware/debouncer.git"
-	},
-	"bugs": {
-		"url": "https://github.com/cfware/debouncer/issues"
-	},
-	"homepage": "https://github.com/cfware/debouncer#readme",
-	"devDependencies": {
-		"@cfware/lint": "^3.0.0",
-		"@cfware/nyc": "^0.7.1",
-		"@istanbuljs/esm-loader-hook": "^0.2.0",
-		"libtap": "^1.4.0",
-		"nyc": "^15.1.0",
-		"tap-yaml-summary": "^0.2.0"
-	}
+    "name": "@cfware/debouncer",
+    "version": "0.3.3",
+    "description": "Debouncer class",
+    "main": "debouncer.js",
+    "exports": "./debouncer.js",
+    "type": "module",
+    "scripts": {
+        "pretest": "cfware-lint .",
+        "tests-only": "nyc -s --no-check-coverage node --experimental-loader @istanbuljs/esm-loader-hook test.js | tap-yaml-summary",
+        "test": "npm run -s tests-only",
+        "posttest": "nyc report"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "author": "Corey Farrell",
+    "license": "MIT",
+    "keywords": [],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cfware/debouncer.git"
+    },
+    "bugs": {
+        "url": "https://github.com/cfware/debouncer/issues"
+    },
+    "homepage": "https://github.com/cfware/debouncer#readme",
+    "devDependencies": {
+        "@cfware/lint": "^4",
+        "@cfware/nyc": "^1",
+        "@istanbuljs/esm-loader-hook": "^0.2",
+        "libtap": "^1",
+        "nyc": "^15",
+        "tap-yaml-summary": "^0.2"
+    }
 }
