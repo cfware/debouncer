@@ -1,6 +1,6 @@
 {
     "name": "@cfware/debouncer",
-    "version": "0.3.3",
+    "version": "1.0.0",
     "description": "Debouncer class",
     "main": "debouncer.js",
     "exports": "./debouncer.js",
